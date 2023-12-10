@@ -1,16 +1,31 @@
-# ramrobazar_mobile_app
+# Ramrobazar
 
-A new Flutter project.
+A revamped mobile application of Hamrobazar.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Team members
+   Astika Gurung
+   Drishya Karki
+   Nishant Sapkota
+   Sabin Maharjan
 
-A few resources to get you started if this is your first Flutter project:
+   
+## Revamped Aspects:
+    1) Refined Layout.
+    2) Fair Price Enforcer.
+    3) Category regrouping.
+    4) Name/Logo.
+    5) Color Schemes.
+    6)
+    7)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features:
+    1) User register.
+    2) User login.
+    3) Dashboard.
+    4) Advertisement listing.
+    5)
+    6)
+    7)
+
