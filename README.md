@@ -4,10 +4,10 @@ A revamped mobile application of Hamrobazar.
 
 
 ## Team members
-   Astika Gurung
-   Drishya Karki
-   Nishant Sapkota
-   Sabin Maharjan
+      Astika Gurung
+      Drishya Karki
+      Nishant Sapkota
+      Sabin Maharjan
 
    
 ## Revamped Aspects:
