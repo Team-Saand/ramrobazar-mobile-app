@@ -282,8 +282,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                                     first_name: first_name,
                                     middle_name: middle_name,
                                     last_name: last_name,
-                                    phone:
-                                        _phoneController.text.trim(),
+                                    phone: _phoneController.text.trim(),
                                     password: _passwordController.text.trim());
                                 await ref
                                     .read(authViewModelProvider.notifier)

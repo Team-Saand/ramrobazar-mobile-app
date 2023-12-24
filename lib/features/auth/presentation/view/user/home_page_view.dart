@@ -33,6 +33,7 @@ class _HomViewState extends State<HomView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: lstBottomScreen[_selectedIndex],
       backgroundColor: ThemeConstant.backgroundColor,
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
@@ -44,17 +45,20 @@ class _HomViewState extends State<HomView> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
-        height: 55,
-        activeColor: ThemeConstant.primaryColor,
-        borderColor: const Color.fromARGB(255, 212, 210, 210),
-        inactiveColor: const Color.fromARGB(255, 103, 102, 102),
-        iconSize: 32,
-        icons: iconList,
-        activeIndex: _selectedIndex,
-        gapLocation: GapLocation.center,
-        notchSmoothness: NotchSmoothness.defaultEdge,
-        onTap: (index) => setState(() => _selectedIndex = index),
-      ),
+          height: 55,
+          activeColor: ThemeConstant.primaryColor,
+          borderColor: const Color.fromARGB(255, 212, 210, 210),
+          inactiveColor: const Color.fromARGB(255, 103, 102, 102),
+          iconSize: 32,
+          icons: iconList,
+          activeIndex: _selectedIndex,
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.defaultEdge,
+          onTap: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          }),
     );
   }
 }

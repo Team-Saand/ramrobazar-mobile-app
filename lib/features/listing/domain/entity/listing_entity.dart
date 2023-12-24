@@ -32,7 +32,7 @@ class ListingEntity {
         description: json['description'],
         images: json['images'],
         username: json['username'],
-        phone: json['medicationPhoto'],
+        phone: json['phone'],
         views: json['views'],
         negotiable: json['negotiable'],
         category: json['category'],
@@ -46,7 +46,7 @@ class ListingEntity {
         'description': description,
         'images': images,
         'username': username,
-        'medicationPhoto': phone,
+        'phone': phone,
         'views': views,
         'negotiable': negotiable,
         'category': category
