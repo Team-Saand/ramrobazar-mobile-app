@@ -21,7 +21,7 @@ class ListingApiModel {
   final String username;
   final String phone;
   final String views;
-  final String negotiable;
+  final String condition;
   final String category;
 
   ListingApiModel(
@@ -34,7 +34,7 @@ class ListingApiModel {
       required this.username,
       required this.views,
       required this.phone,
-      required this.negotiable,
+      required this.condition,
       required this.category});
 
   ListingApiModel.empty()
@@ -47,7 +47,7 @@ class ListingApiModel {
         username = '',
         views = '',
         phone = '',
-        negotiable = '',
+        condition = '',
         category = '';
 
   factory ListingApiModel.fromJson(Map<String, dynamic> json) =>
@@ -65,7 +65,7 @@ class ListingApiModel {
       username: username,
       views: views,
       phone: phone,
-      negotiable: negotiable,
+      condition: condition,
       category: category);
 
   // Convert Hive List to Entity List
@@ -83,7 +83,7 @@ class ListingApiModel {
         username: json['username'] as String,
         phone: json['phone'] as String,
         views: json['views'] as String,
-        negotiable: json['negotiable'] as String,
+        condition: json['condition'] as String,
         category: json['category'] as String,
         images: json['images'] as List<String>,
       );

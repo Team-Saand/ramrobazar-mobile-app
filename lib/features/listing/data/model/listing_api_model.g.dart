@@ -18,7 +18,7 @@ ListingApiModel _$ListingApiModelFromJson(Map<String, dynamic> json) =>
       username: json['username'] as String,
       views: json['views'] as String,
       phone: json['phone'] as String,
-      negotiable: json['negotiable'] as String,
+      condition: json['condition'] as String,
       category: json['category'] as String,
     );
 
@@ -33,6 +33,6 @@ Map<String, dynamic> _$ListingApiModelToJson(ListingApiModel instance) =>
       'username': instance.username,
       'phone': instance.phone,
       'views': instance.views,
-      'negotiable': instance.negotiable,
+      'condition': instance.condition,
       'category': instance.category,
     };

@@ -1,27 +1,27 @@
 class ListingEntity {
-  final String id;
+  final String? id;
   final String title;
   final String price;
   final String location;
   final String description;
-  final List<String> images;
-  final String username;
-  final String phone;
-  final String views;
-  final String negotiable;
+  final List<String>? images;
+  final String? username;
+  final String? phone;
+  final String? views;
+  final String condition;
   final String category;
 
   const ListingEntity(
-      {required this.id,
+      {this.id,
       required this.title,
       required this.price,
       required this.location,
       required this.description,
-      required this.images,
-      required this.username,
-      required this.views,
-      required this.phone,
-      required this.negotiable,
+      this.images,
+      this.username,
+      this.views,
+      this.phone,
+      required this.condition,
       required this.category});
 
   factory ListingEntity.fromJson(Map<String, dynamic> json) => ListingEntity(
@@ -34,7 +34,7 @@ class ListingEntity {
         username: json['username'],
         phone: json['phone'],
         views: json['views'],
-        negotiable: json['negotiable'],
+        condition: json['condition'],
         category: json['category'],
       );
 
@@ -48,7 +48,7 @@ class ListingEntity {
         'username': username,
         'phone': phone,
         'views': views,
-        'negotiable': negotiable,
+        'condition': condition,
         'category': category
       };
 }

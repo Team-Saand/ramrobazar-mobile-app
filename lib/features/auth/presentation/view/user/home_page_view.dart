@@ -6,6 +6,8 @@ import 'package:ramrobazar_mobile_app/features/auth/presentation/view/user/user_
 import 'package:ramrobazar_mobile_app/features/auth/presentation/view/user/user_notification_view.dart';
 import 'package:ramrobazar_mobile_app/features/listing/presentation/view/general/view_all_listing.dart';
 
+import '../../../../../config/router/app_route.dart';
+
 class HomView extends StatefulWidget {
   const HomView({super.key});
 
@@ -37,7 +39,9 @@ class _HomViewState extends State<HomView> {
       backgroundColor: ThemeConstant.backgroundColor,
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AppRoute.adBasicDetail);
+        },
         child: const Icon(
           Icons.add,
           size: 36,
