@@ -52,6 +52,7 @@ dependencies:
   google_fonts: ^6.1.0
   flutter_svg: ^2.0.9
   icon_badge: ^1.0.0
+  animated_bottom_navigation_bar: ^1.3.0
 
 
 dev_dependencies:

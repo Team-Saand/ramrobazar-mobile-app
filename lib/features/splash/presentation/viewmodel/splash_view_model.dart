@@ -25,7 +25,7 @@ class SplashViewModel extends StateNotifier<void> {
         if (isTokenExpired) {
           Navigator.popAndPushNamed(context, AppRoute.signin);
         } else {
-          Navigator.popAndPushNamed(context, AppRoute.signin);
+          Navigator.popAndPushNamed(context, AppRoute.home);
         }
       } else {
         Navigator.popAndPushNamed(context, AppRoute.signin);

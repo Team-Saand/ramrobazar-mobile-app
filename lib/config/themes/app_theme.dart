@@ -29,8 +29,8 @@ class AppTheme {
               onSurface: ThemeConstant
                   .backgroundColor, // Text color in scaffold //Icon color in text field
 
-              primaryContainer: Colors.red,
-              onPrimaryContainer: Colors.red,
+              primaryContainer: ThemeConstant.primaryColor, // Middle of bottom nav
+              onPrimaryContainer: ThemeConstant.backgroundColor, //Icon color in middle of bottom nav
               onPrimary: Color.fromARGB(255, 188, 1, 1), //Switch color
               secondaryContainer: Colors.red),
       brightness: isDark ? Brightness.dark : Brightness.light,
