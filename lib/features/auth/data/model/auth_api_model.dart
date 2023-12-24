@@ -16,23 +16,23 @@ class AuthApiModel {
   final String userName;
   final String? password;
   final String email;
-  final String? firstName;
-  final String? middleName;
-  final String? lastName;
+  final String? first_name;
+  final String? middle_name;
+  final String? last_name;
   final String? gender;
   final String? dateOfBirth;
   final String? address;
-  final String? phoneNumber;
+  final String? phone;
   final String? userPhoto;
 
   AuthApiModel({
-    this.firstName,
-    this.middleName,
-    this.lastName,
+    this.first_name,
+    this.middle_name,
+    this.last_name,
     this.gender,
     this.dateOfBirth,
     this.address,
-    this.phoneNumber,
+    this.phone,
     this.userPhoto,
     this.password,
     this.id,
@@ -45,13 +45,13 @@ class AuthApiModel {
         userName = '',
         password = '',
         email = '',
-        firstName = '',
-        middleName = '',
-        lastName = '',
+        first_name = '',
+        middle_name = '',
+        last_name = '',
         gender = '',
         dateOfBirth = '',
         address = '',
-        phoneNumber = '',
+        phone = '',
         userPhoto = '';
 
   factory AuthApiModel.fromJson(Map<String, dynamic> json) =>
@@ -65,13 +65,13 @@ class AuthApiModel {
         userName: userName,
         password: password,
         email: email,
-        firstName: firstName,
-        middleName: middleName,
-        lastName: lastName,
+        first_name: first_name,
+        middle_name: middle_name,
+        last_name: last_name,
         gender: gender,
         dateOfBirth: dateOfBirth,
         address: address,
-        phoneNumber: phoneNumber,
+        phone: phone,
         userPhoto: userPhoto,
       );
 
@@ -79,6 +79,6 @@ class AuthApiModel {
 
   @override
   String toString() {
-    return 'AuthApiModel(id: $id, userName: $userName, password: $password, email: $email, firstName: $firstName, middleName: $middleName, lastName: $lastName, gender : $gender, dateOfBirth: $dateOfBirth, address: $address, phoneNumber: $phoneNumber, userPhoto: $userPhoto)';
+    return 'AuthApiModel(id: $id, userName: $userName, password: $password, email: $email, first_name: $first_name, middle_name: $middle_name, last_name: $last_name, gender : $gender, dateOfBirth: $dateOfBirth, address: $address, phone: $phone, userPhoto: $userPhoto)';
   }
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ramrobazar_mobile_app/config/constants/theme_constant.dart';
+import 'package:ramrobazar_mobile_app/core/common/snackbar/snackbar_message.dart';
 import 'package:ramrobazar_mobile_app/features/auth/domain/entity/user_entity.dart';
 
 import '../../../../../config/router/app_route.dart';
-import '../../../../../core/common/snackbar/snackbar_message.dart';
 import '../../viewmodel/auth_view_model.dart';
 
 class SignUpView extends ConsumerStatefulWidget {
@@ -15,187 +16,338 @@ class SignUpView extends ConsumerStatefulWidget {
 }
 
 class _SignUpViewState extends ConsumerState<SignUpView> {
-  var _isObscured = true;
-  var _isObscured1 = true;
-
-  final _userNameController = TextEditingController();
+  // Controllers for TextFormFields
+  final _phoneController = TextEditingController();
+  final _nameController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
+
+  bool _isObscured = true;
   final _key = GlobalKey<FormState>();
 
   @override
   void initState() {
-    _userNameController.text = '';
+    _phoneController.text = '';
     _passwordController.text = '';
-    _confirmPasswordController.text = '';
-    _isObscured = true;
-
+    _nameController.text = '';
     super.initState();
   }
 
   @override
   void dispose() {
-    _userNameController.dispose();
+    _phoneController.dispose();
     _passwordController.dispose();
-    _confirmPasswordController.dispose();
+    _nameController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final smallerGap = SizedBox(height: screenSize.height * 0.01);
+    final smallerGap = SizedBox(height: screenSize.height * 0.015);
     final buttonWidth = screenSize.width;
     final textFieldWidth = screenSize.width;
     final gap = SizedBox(height: screenSize.height * 0.03);
+    final iconHeight = screenSize.height * 0.03;
+    final fieldHeight = screenSize.height * 0.06;
+    const fontSizee = 15.0;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        title: const Text(''),
         centerTitle: true,
         elevation: 0,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Form(
-            key: _key,
-            child: Column(children: [
-              const CircleAvatar(
-                  radius: 100,
-                  backgroundImage: AssetImage('assets/images/orange-icon.png')),
-              gap,
-              gap,
-              SizedBox(
-                width: screenSize.width,
-              ),
-              SizedBox(
-                width: textFieldWidth,
-                child: TextFormField(
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp('[a-z 0-9]'))
-                  ],
-                  controller: _userNameController,
-                  keyboardType: TextInputType.text,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.person),
-                    labelText: 'Username',
-                    hintText: 'sabin',
-                    border: OutlineInputBorder(),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Form(
+              key: _key,
+              child: Column(mainAxisSize: MainAxisSize.min, children: [
+                gap,
+                Center(
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: const TextSpan(
+                        text: "Sign Up\n",
+                        style: TextStyle(
+                            fontSize: 50,
+                            fontWeight: FontWeight.bold,
+                            color: ThemeConstant.textColor),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Sign up instantly',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          )
+                        ]),
                   ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter your username!';
-                    }
-                    return null;
-                  },
                 ),
-              ),
-              gap,
-              SizedBox(
-                width: textFieldWidth,
-                child: TextFormField(
-                  keyboardType: TextInputType.text,
-                  obscureText: _isObscured,
-                  controller: _passwordController,
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.lock),
-                    labelText: 'Password',
-                    hintText: '**********',
-                    border: const OutlineInputBorder(),
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _isObscured = !_isObscured;
-                        });
-                      },
-                      icon: _isObscured
-                          ? const Icon(Icons.visibility)
-                          : const Icon(Icons.visibility_off),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter your password!';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              gap,
-              SizedBox(
-                width: textFieldWidth,
-                child: TextFormField(
-                  keyboardType: TextInputType.text,
-                  obscureText: _isObscured1,
-                  controller: _confirmPasswordController,
-                  decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.lock),
-                      labelText: 'Confirm Password',
-                      hintText: '**********',
-                      border: const OutlineInputBorder(),
-                      suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _isObscured1 = !_isObscured1;
-                            });
+                // gap,
+                gap,
+                // gap,
+                Flexible(
+                  fit: FlexFit.loose,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: fieldHeight,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          color: ThemeConstant.backgroundColor,
+                        ),
+                        width: textFieldWidth,
+                        child: TextFormField(
+                          style: const TextStyle(
+                              color: ThemeConstant.fieldTextColor),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp('[a-z" "]'))
+                          ],
+                          controller: _nameController,
+                          decoration: InputDecoration(
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            prefixIcon: Icon(Icons.person, size: iconHeight),
+                            label: const Text(
+                              ' Name',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: fontSizee),
+                            ),
+                            hintText: 'Ramro Nepal',
+                            border: const OutlineInputBorder(),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              showMessageToUser(
+                                  context: context,
+                                  message: "Name is empty",
+                                  color: Colors.red);
+                              return null;
+                            }
+                            return null;
                           },
-                          icon: _isObscured1
-                              ? const Icon(Icons.visibility)
-                              : const Icon(Icons.visibility_off))),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please confirm your password!';
-                    }
-                    return null;
-                  },
+                        ),
+                      ),
+                      smallerGap,
+                      Container(
+                        height: fieldHeight,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          color: ThemeConstant.backgroundColor,
+                        ),
+                        width: textFieldWidth,
+                        child: TextFormField(
+                          style: const TextStyle(
+                              color: ThemeConstant.fieldTextColor),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp('[a-z0-9]'))
+                          ],
+                          controller: _phoneController,
+                          decoration: InputDecoration(
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            prefixIcon: Icon(Icons.phone, size: iconHeight),
+                            label: const Text(
+                              ' Phone number',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: fontSizee),
+                            ),
+                            hintText: '9812345678',
+                            border: const OutlineInputBorder(),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              showMessageToUser(
+                                  context: context,
+                                  message: "Phone number is empty",
+                                  color: Colors.red);
+                              return null;
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      smallerGap,
+                      SizedBox(
+                        width: screenSize.width,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          color: ThemeConstant.backgroundColor,
+                        ),
+                        height: fieldHeight,
+                        width: textFieldWidth,
+                        child: TextFormField(
+                          style: const TextStyle(
+                              color: ThemeConstant.fieldTextColor),
+                          obscureText: _isObscured,
+                          controller: _passwordController,
+                          decoration: InputDecoration(
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
+                              prefixIcon: Icon(Icons.lock, size: iconHeight),
+                              label: const Text(
+                                ' Password',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: fontSizee),
+                              ),
+                              hintText: '********',
+                              border: const OutlineInputBorder(),
+                              suffixIcon: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isObscured = !_isObscured;
+                                    });
+                                  },
+                                  icon: _isObscured
+                                      ? const Icon(Icons.visibility)
+                                      : const Icon(Icons.visibility_off))),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              showMessageToUser(
+                                  context: context,
+                                  message: "Password is empty",
+                                  color: Colors.red);
+
+                              return null;
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              gap,
-              gap,
-              SizedBox(
-                width: buttonWidth,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_key.currentState!.validate()) {
-                      if (_passwordController.text.trim().length > 7) {
-                        if (_passwordController.text.trim() !=
-                            _confirmPasswordController.text.trim()) {
-                          showMessageToUser(
-                              context: context,
-                              message:
-                                  "Password and Confirm password do not match!",
-                              color: Colors.red);
-                        } else {
-                          UserEntity user = UserEntity(
-                              userName: _userNameController.text.trim(),
-                              password: _passwordController.text.trim());
-                          ref
-                              .read(authViewModelProvider.notifier)
-                              .registerUser(context, user);
-                        }
-                      } else {
-                        showMessageToUser(
-                            context: context,
-                            message: "Password is shorter than 7 characters!",
-                            color: Colors.red);
-                      }
-                    }
-                  },
-                  child: const Text('Sign Up'),
+                smallerGap,
+                smallerGap,
+                smallerGap,
+                Flexible(
+                  fit: FlexFit.loose,
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          color: ThemeConstant.accentColor,
+                        ),
+                        width: buttonWidth,
+                        height: fieldHeight,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  ThemeConstant.accentColor)),
+                          onPressed: () async {
+                            if (_key.currentState!.validate()) {
+                              List<String> strarray =
+                                  _nameController.text.split(" ");
+                              String first_name = "";
+                              String middle_name = "";
+                              String last_name = "";
+                              bool trueName = true;
+
+                              print(strarray);
+                              print(strarray.length);
+
+                              if (strarray.length <= 1) {
+                                trueName = false;
+                                showMessageToUser(
+                                    context: context,
+                                    message: "Please provide your full name.",
+                                    color: Colors.red);
+                              } else if (strarray.length == 2) {
+                                first_name = strarray[0];
+                                last_name = strarray[1];
+                              } else {
+                                first_name = strarray[0];
+                                last_name = strarray[strarray.length - 1];
+                                for (var i = 1; i < strarray.length - 1; i++) {
+                                  strarray[i] = strarray[i][0].toUpperCase() +
+                                      strarray[i].substring(1);
+
+                                  middle_name += strarray[i];
+                                }
+                              }
+
+                              first_name = first_name[0].toUpperCase() +
+                                  first_name.substring(1);
+                              last_name = last_name[0].toUpperCase() +
+                                  last_name.substring(1);
+
+                              if (trueName) {
+                                UserEntity obj = UserEntity(
+                                    first_name: first_name,
+                                    middle_name: middle_name,
+                                    last_name: last_name,
+                                    phone:
+                                        _phoneController.text.trim(),
+                                    password: _passwordController.text.trim());
+                                await ref
+                                    .read(authViewModelProvider.notifier)
+                                    .registerUser(context, obj);
+                              }
+                            }
+                          },
+                          child: const Text(
+                            'Sign Up',
+                            style: TextStyle(fontSize: 20),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                      gap,
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "or",
+                            style: TextStyle(fontSize: 15),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 50,
+                        width: buttonWidth,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child:
+                                      Image.asset('assets/images/google.png')),
+                              const SizedBox(
+                                width: 60,
+                              ),
+                              const Text('Login with Google'),
+                            ],
+                          ),
+                        ),
+                      ),
+                      gap,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () =>
+                                {Navigator.pushNamed(context, AppRoute.signin)},
+                            child: const Text(
+                              "Already have an account? Log In?",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              smallerGap,
-              SizedBox(
-                width: buttonWidth,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, AppRoute.signin);
-                  },
-                  child: const Text('Sign In'),
-                ),
-              ),
-            ]),
+              ]),
+            ),
           ),
         ),
       ),

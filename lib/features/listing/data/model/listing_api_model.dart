@@ -19,7 +19,7 @@ class ListingApiModel {
   final String description;
   final List<String> images;
   final String username;
-  final String phoneNumber;
+  final String phone;
   final String views;
   final String negotiable;
   final String category;
@@ -33,7 +33,7 @@ class ListingApiModel {
       required this.images,
       required this.username,
       required this.views,
-      required this.phoneNumber,
+      required this.phone,
       required this.negotiable,
       required this.category});
 
@@ -46,7 +46,7 @@ class ListingApiModel {
         images = [],
         username = '',
         views = '',
-        phoneNumber = '',
+        phone = '',
         negotiable = '',
         category = '';
 
@@ -64,7 +64,7 @@ class ListingApiModel {
       images: images,
       username: username,
       views: views,
-      phoneNumber: phoneNumber,
+      phone: phone,
       negotiable: negotiable,
       category: category);
 
@@ -81,7 +81,7 @@ class ListingApiModel {
         location: json['location'] as String,
         description: json['description'] as String,
         username: json['username'] as String,
-        phoneNumber: json['phoneNumber'] as String,
+        phone: json['phone'] as String,
         views: json['views'] as String,
         negotiable: json['negotiable'] as String,
         category: json['category'] as String,

@@ -29,17 +29,15 @@ class AuthRemoteDataSource {
   Future<Either<Failure, bool>> registerUser(UserEntity user) async {
     try {
       Map<String, String?> data;
-      if (user.firstName != null) {
-        data = {
-          "userName": user.userName,
-          "password": user.password,
-        };
-      } else {
-        data = {
-          "userName": user.userName,
-          "password": user.password,
-        };
-      }
+
+      data = {
+        "first_name": user.first_name,
+        "middle_name": user.middle_name,
+        "last_name": user.last_name,
+        "phone": "+977${user.phone}",
+        "password": user.password,
+      };
+
       Response response = await dio.post(ApiEndpoints.register, data: data);
 
       if (response.statusCode == 201) {
@@ -47,7 +45,7 @@ class AuthRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: response.data["error"],
+            error: response.data['error']['message'][0].message,
             statusCode: response.statusCode.toString(),
           ),
         );
@@ -63,7 +61,8 @@ class AuthRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error'] ?? 'No response from server',
+            error: e.response!.data['error']['message'][0] ??
+                'No response from server',
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );
@@ -72,27 +71,27 @@ class AuthRemoteDataSource {
   }
 
   Future<Either<Failure, bool>> loginUser(
-    String userName,
+    String phone,
     String password,
   ) async {
     try {
       Response response = await dio.post(
         ApiEndpoints.login,
         data: {
-          "userName": userName,
+          "phone": "+977$phone",
           "password": password,
         },
       );
       if (response.statusCode == 200) {
         await userSharedPrefs.deleteUserToken();
 
-        String token = response.data["token"];
+        String token = response.data["data"];
         await userSharedPrefs.setUserToken(token);
         return const Right(true);
       } else {
         return Left(
           Failure(
-            error: response.data["error"],
+            error: response.data['error']['message'][0],
             statusCode: response.statusCode.toString(),
           ),
         );
@@ -108,7 +107,7 @@ class AuthRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error'] ?? 'No response from server',
+            error: e.response!.data['error']['message'].toString(),
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );

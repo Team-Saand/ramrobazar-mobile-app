@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ramrobazar_mobile_app/config/constants/theme_constant.dart';
+import 'package:ramrobazar_mobile_app/core/common/snackbar/snackbar_message.dart';
 
 import '../../../../../config/router/app_route.dart';
 import '../../viewmodel/auth_view_model.dart';
@@ -41,7 +42,10 @@ class _SignInViewState extends ConsumerState<SignInView> {
     final smallerGap = SizedBox(height: screenSize.height * 0.015);
     final buttonWidth = screenSize.width;
     final textFieldWidth = screenSize.width;
-    final gap = SizedBox(height: screenSize.height * 0.04);
+    final gap = SizedBox(height: screenSize.height * 0.03);
+    final iconHeight = screenSize.height * 0.03;
+    final fieldHeight = screenSize.height * 0.06;
+    const fontSizee = 15.0;
 
     return Scaffold(
       appBar: AppBar(
@@ -86,27 +90,38 @@ class _SignInViewState extends ConsumerState<SignInView> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
+                        height: fieldHeight,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.0),
                           color: ThemeConstant.backgroundColor,
                         ),
                         width: textFieldWidth,
                         child: TextFormField(
+                          style: const TextStyle(
+                              color: ThemeConstant.fieldTextColor),
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
                                 RegExp('[a-z0-9]'))
                           ],
                           controller: _userNameController,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             floatingLabelBehavior: FloatingLabelBehavior.never,
-                            prefixIcon: Icon(Icons.person),
-                            label: Text('Username'),
-                            hintText: 'user',
-                            border: OutlineInputBorder(),
+                            prefixIcon: Icon(Icons.phone, size: iconHeight),
+                            label: const Text(
+                              ' Phone number',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: fontSizee),
+                            ),
+                            hintText: '98231234567',
+                            border: const OutlineInputBorder(),
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Please enter your username!';
+                              showMessageToUser(
+                                  context: context,
+                                  message: "Phone number is empty",
+                                  color: Colors.red);
+                              return null;
                             }
                             return null;
                           },
@@ -121,15 +136,22 @@ class _SignInViewState extends ConsumerState<SignInView> {
                           borderRadius: BorderRadius.circular(5.0),
                           color: ThemeConstant.backgroundColor,
                         ),
+                        height: fieldHeight,
                         width: textFieldWidth,
                         child: TextFormField(
+                          style: const TextStyle(
+                              color: ThemeConstant.fieldTextColor),
                           obscureText: _isObscured,
                           controller: _passwordController,
                           decoration: InputDecoration(
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.never,
-                              prefixIcon: const Icon(Icons.lock),
-                              labelText: 'Password',
+                              prefixIcon: Icon(Icons.lock, size: iconHeight),
+                              label: const Text(
+                                ' Password',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: fontSizee),
+                              ),
                               hintText: '********',
                               border: const OutlineInputBorder(),
                               suffixIcon: IconButton(
@@ -143,7 +165,12 @@ class _SignInViewState extends ConsumerState<SignInView> {
                                       : const Icon(Icons.visibility_off))),
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Please enter your password!';
+                              showMessageToUser(
+                                  context: context,
+                                  message: "Password is empty",
+                                  color: Colors.red);
+
+                              return null;
                             }
                             return null;
                           },
@@ -154,9 +181,15 @@ class _SignInViewState extends ConsumerState<SignInView> {
                 ),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [Text("Forgot password?")],
+                  children: [
+                    Text(
+                      "Forgot password?",
+                      style: TextStyle(fontSize: 15),
+                    )
+                  ],
                 ),
-                gap,
+                smallerGap,
+                smallerGap,
                 Flexible(
                   fit: FlexFit.loose,
                   child: Column(
@@ -167,6 +200,7 @@ class _SignInViewState extends ConsumerState<SignInView> {
                           color: ThemeConstant.accentColor,
                         ),
                         width: buttonWidth,
+                        height: fieldHeight,
                         child: ElevatedButton(
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
@@ -182,35 +216,36 @@ class _SignInViewState extends ConsumerState<SignInView> {
                                   );
                             }
                           },
-                          child: const Text('Log In'),
+                          child: const Text(
+                            'Log In',
+                            style: TextStyle(fontSize: 20),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
-                      smallerGap,
+                      gap,
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             "or",
-                            style: TextStyle(fontSize: 12),
+                            style: TextStyle(fontSize: 15),
                           )
                         ],
                       ),
                       SizedBox(
-                        height: 60,
+                        height: 50,
                         width: buttonWidth,
                         child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, AppRoute.signup);
-                          },
+                          onPressed: () {},
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Container(
-                                  child: SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: Image.asset(
-                                          'assets/images/google.png'))),
+                              SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child:
+                                      Image.asset('assets/images/google.png')),
                               const SizedBox(
                                 width: 60,
                               ),
@@ -218,6 +253,20 @@ class _SignInViewState extends ConsumerState<SignInView> {
                             ],
                           ),
                         ),
+                      ),
+                      gap,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () =>
+                                {Navigator.pushNamed(context, AppRoute.signup)},
+                            child: const Text(
+                              "Don't have an account? Sign Up?",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          )
+                        ],
                       ),
                     ],
                   ),

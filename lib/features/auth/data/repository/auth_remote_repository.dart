@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../../core/failure/failure.dart';
 import '../../domain/entity/user_entity.dart';
 import '../../domain/repository/auth_repository.dart';
@@ -17,8 +18,8 @@ class AuthRemoteRepositoryImpl implements IAuthRepository {
 
   @override
   Future<Either<Failure, bool>> loginUser(
-      String username, String password) async {
-    return await _authRemoteDataSource.loginUser(username, password);
+      String phone, String password) async {
+    return await _authRemoteDataSource.loginUser(phone, password);
   }
 
   @override

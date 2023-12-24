@@ -50,6 +50,8 @@ dependencies:
   build_runner: ^2.4.7
   json_serializable: ^6.7.1
   google_fonts: ^6.1.0
+  flutter_svg: ^2.0.9
+  icon_badge: ^1.0.0
 
 
 dev_dependencies:

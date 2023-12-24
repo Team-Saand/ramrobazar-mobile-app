@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../../config/router/app_route.dart';
 import '../../../../core/common/snackbar/snackbar_message.dart';
 import '../../domain/entity/user_entity.dart';
@@ -39,10 +40,10 @@ class AuthViewModel extends StateNotifier<AuthState> {
   }
 
   Future<void> loginUser(
-      BuildContext context, String username, String password) async {
+      BuildContext context, String phone, String password) async {
     state = state.copyWith(isLoading: true);
 
-    var data = await _authUseCase.loginUser(username, password);
+    var data = await _authUseCase.loginUser(phone, password);
     data.fold(
       (failure) {
         state = state.copyWith(isLoading: false, error: failure.error);

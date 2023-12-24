@@ -49,7 +49,7 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: response.data["error"],
+            error: response.data['error']['message'][0],
             statusCode: response.statusCode.toString(),
           ),
         );
@@ -65,7 +65,7 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error'] ?? 'No response from server',
+            error: e.response!.data['error']['message'][0] ?? 'No response from server',
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );
@@ -92,7 +92,7 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: response.data["error"],
+            error: response.data['error']['message'][0],
             statusCode: response.statusCode.toString(),
           ),
         );
@@ -108,7 +108,7 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error'] ?? 'No response from server',
+            error: e.response!.data['error']['message'][0] ?? 'No response from server',
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );
@@ -155,7 +155,7 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error'] ?? 'No response from server',
+            error: e.response!.data['error']['message'][0] ?? 'No response from server',
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );
@@ -208,7 +208,7 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error'] ?? 'No response from server',
+            error: e.response!.data['error']['message'][0] ?? 'No response from server',
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );
@@ -234,7 +234,7 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: response.data["error"],
+            error: response.data['error']['message'][0],
             statusCode: response.statusCode.toString(),
           ),
         );
@@ -250,7 +250,7 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error'] ?? 'No response from server',
+            error: e.response!.data['error']['message'][0] ?? 'No response from server',
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );

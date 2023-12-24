@@ -1,14 +1,14 @@
 import 'package:ramrobazar_mobile_app/features/auth/presentation/view/general/landing_page_view.dart';
+import 'package:ramrobazar_mobile_app/features/auth/presentation/view/general/signin_view.dart';
 
-import '../../features/listing/presentation/view/create/listing_basic_details.dart';
-import '../../features/listing/presentation/view/general/update_listing_view.dart';
-import '../../features/listing/presentation/view/general/view_all_listing.dart';
-import '../../features/listing/presentation/view/general/view_single_listing.dart';
-import '../../features/auth/presentation/view/general/signin_view.dart';
 import '../../features/auth/presentation/view/general/signup_view.dart';
 import '../../features/auth/presentation/view/user/user_dashboard_view.dart';
 import '../../features/auth/presentation/view/user/user_message_view.dart';
 import '../../features/auth/presentation/view/user/user_notification_view.dart';
+import '../../features/listing/presentation/view/create/listing_basic_details.dart';
+import '../../features/listing/presentation/view/general/update_listing_view.dart';
+import '../../features/listing/presentation/view/general/view_all_listing.dart';
+import '../../features/listing/presentation/view/general/view_single_listing.dart';
 import '../../features/splash/presentation/view/splash_view.dart';
 
 class AppRoute {

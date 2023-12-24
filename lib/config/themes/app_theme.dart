@@ -27,7 +27,7 @@ class AppTheme {
               onBackground: ThemeConstant
                   .accentColor, // Surrounding border of text fields
               onSurface: ThemeConstant
-                  .fieldTextColor, // Text color in scaffold //Icon color in text field
+                  .backgroundColor, // Text color in scaffold //Icon color in text field
 
               primaryContainer: Colors.red,
               onPrimaryContainer: Colors.red,

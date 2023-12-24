@@ -6,7 +6,7 @@ class ListingEntity {
   final String description;
   final List<String> images;
   final String username;
-  final String phoneNumber;
+  final String phone;
   final String views;
   final String negotiable;
   final String category;
@@ -20,7 +20,7 @@ class ListingEntity {
       required this.images,
       required this.username,
       required this.views,
-      required this.phoneNumber,
+      required this.phone,
       required this.negotiable,
       required this.category});
 
@@ -32,7 +32,7 @@ class ListingEntity {
         description: json['description'],
         images: json['images'],
         username: json['username'],
-        phoneNumber: json['medicationPhoto'],
+        phone: json['medicationPhoto'],
         views: json['views'],
         negotiable: json['negotiable'],
         category: json['category'],
@@ -46,7 +46,7 @@ class ListingEntity {
         'description': description,
         'images': images,
         'username': username,
-        'medicationPhoto': phoneNumber,
+        'medicationPhoto': phone,
         'views': views,
         'negotiable': negotiable,
         'category': category
