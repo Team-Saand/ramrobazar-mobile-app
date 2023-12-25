@@ -12,28 +12,28 @@ final listingApiModelProvider = Provider<ListingApiModel>(
 @JsonSerializable()
 class ListingApiModel {
   @JsonKey(name: 'id')
-  final String id;
+  final String? id;
   final String title;
   final String price;
   final String location;
   final String description;
-  final List<String> images;
-  final String username;
-  final String phone;
-  final String views;
+  final List<String>? images;
+  final String? username;
+  final String? phone;
+  final String? views;
   final String condition;
   final String category;
 
   ListingApiModel(
-      {required this.id,
+      {this.id,
       required this.title,
       required this.price,
       required this.location,
       required this.description,
-      required this.images,
-      required this.username,
-      required this.views,
-      required this.phone,
+      this.images,
+      this.username,
+      this.views,
+      this.phone,
       required this.condition,
       required this.category});
 
@@ -75,14 +75,14 @@ class ListingApiModel {
   ListingEntity toListingEntity(ListingApiModel model) => model.toEntity();
 
   ListingApiModel customFromJson(Map<String, dynamic> json) => ListingApiModel(
-        id: json['id'] as String,
-        title: json['title'] as String,
-        price: json['price'] as String,
+        id: json['id'].toString(),
+        title: json['name'] as String,
+        price: json['price'].toString(),
         location: json['location'] as String,
         description: json['description'] as String,
         username: json['username'] as String,
-        phone: json['phone'] as String,
-        views: json['views'] as String,
+        phone: json['phone'].toString(),
+        views: json['views'].toString(),
         condition: json['condition'] as String,
         category: json['category'] as String,
         images: json['images'] as List<String>,

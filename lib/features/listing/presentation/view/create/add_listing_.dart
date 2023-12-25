@@ -64,8 +64,6 @@ class _AdBasicDetailViewState extends ConsumerState<AdBasicDetailView> {
     final buttonWidth = screenSize.width;
     final textFieldWidth = screenSize.width;
     final gap = SizedBox(height: screenSize.height * 0.03);
-    final iconHeight = screenSize.height * 0.03;
-    final fieldHeight = screenSize.height * 0.08;
     const fontSizee = 15.0;
 
     return Scaffold(
@@ -85,23 +83,22 @@ class _AdBasicDetailViewState extends ConsumerState<AdBasicDetailView> {
                     child: RichText(
                       textAlign: TextAlign.center,
                       text: const TextSpan(
-                          text: "Post a new Ad\n",
+                          text: "Post a new AD\n",
                           style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold, 
+                              height: 1.5,
                               color: ThemeConstant.fieldTextColor),
                           children: <TextSpan>[
                             TextSpan(
                               text: 'Earn money by posting a free ad',
                               style: TextStyle(
-                                fontSize: 20,
-                                fontStyle: FontStyle.italic,
-                              ),
+                                  fontSize: 14,
+                                  color: Color.fromARGB(255, 156, 154, 154)),
                             )
                           ]),
                     ),
                   ),
-                  gap,
                   gap,
                   gap,
                   ListView.builder(
@@ -110,7 +107,7 @@ class _AdBasicDetailViewState extends ConsumerState<AdBasicDetailView> {
                     itemCount: controllers.length,
                     itemBuilder: (context, index) {
                       return Column(mainAxisSize: MainAxisSize.min, children: [
-                          gap,
+                        gap,
                         Flexible(
                           fit: FlexFit.loose,
                           child: Column(
@@ -138,29 +135,25 @@ class _AdBasicDetailViewState extends ConsumerState<AdBasicDetailView> {
                                 ),
                                 width: textFieldWidth,
                                 child: TextFormField(
-                                  
                                   style: const TextStyle(
                                       color: ThemeConstant.fieldTextColor),
                                   inputFormatters: [
                                     FilteringTextInputFormatter.allow(
-                                        RegExp('[a-z0-9]'))
+                                        RegExp('[a-z0-9A-Z]'))
                                   ],
                                   controller: controllers[index],
                                   decoration: const InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                          color:
-                                              ThemeConstant.primaryColor),
+                                          color: ThemeConstant.primaryColor),
                                     ),
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                          color:
-                                              ThemeConstant.primaryColor),
+                                          color: ThemeConstant.primaryColor),
                                     ),
-                                    focusedErrorBorder:
-                                        UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: ThemeConstant.accentColor),
+                                    focusedErrorBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: ThemeConstant.accentColor),
                                     ),
                                     errorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
@@ -196,22 +189,22 @@ class _AdBasicDetailViewState extends ConsumerState<AdBasicDetailView> {
                       ]);
                     },
                   ),
-                  smallerGap,
-                  smallerGap,
-                  smallerGap,
+                  gap,
+                  gap,
+                  gap,
                   Column(
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
-                          color: ThemeConstant.accentColor,
+                          borderRadius: BorderRadius.circular(20.0),
+                          color: ThemeConstant.primaryColor,
                         ),
                         width: buttonWidth,
                         height: 50,
                         child: ElevatedButton(
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  ThemeConstant.accentColor)),
+                                  ThemeConstant.primaryColor)),
                           onPressed: () async {
                             if (_key.currentState!.validate()) {
                               ListingEntity obj = ListingEntity(
@@ -228,12 +221,15 @@ class _AdBasicDetailViewState extends ConsumerState<AdBasicDetailView> {
                             }
                           },
                           child: const Text(
-                            'Create an Add',
-                            style: TextStyle(fontSize: 20),
+                            'Create an Ad',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: ThemeConstant.backgroundColor),
                             textAlign: TextAlign.center,
                           ),
                         ),
                       ),
+                      gap,
                     ],
                   ),
                 ],

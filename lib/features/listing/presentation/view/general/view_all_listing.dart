@@ -85,6 +85,8 @@ class _AllListingViewState extends ConsumerState<AllListingView> {
                       ),
                     ],
                   ),
+                  gap,
+                  gap,
                   if (listingState.isLoading) ...{
                     SizedBox(
                       height: screenSize.height * 0.8,
@@ -113,8 +115,11 @@ class _AllListingViewState extends ConsumerState<AllListingView> {
                       ),
                     ),
                   } else ...{
-                    const Center(
-                      child: Text("Listings"),
+                    Container(
+                      color: Colors.red,
+                      width: screenSize.width,
+                      height: screenSize.height * 0.7,
+                      child:  Text(listingState.listing![0].title),
                     )
                   }
                 ],

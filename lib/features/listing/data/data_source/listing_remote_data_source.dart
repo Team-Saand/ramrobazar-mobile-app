@@ -38,9 +38,9 @@ class AdRemoteDataSource {
       Map<String, dynamic> data;
 
       data = {
-        "title": listing.title,
-        "price": listing.price,
-        "category": listing.category,
+        "name": listing.title,
+        "price": int.parse(listing.price),
+        "categoryId": 1,
         "condition": listing.condition,
         "location": listing.location,
         "description": listing.description,
@@ -134,7 +134,7 @@ class AdRemoteDataSource {
           .getUserToken()
           .then((value) => value.fold((l) => null, (r) => token = r!));
 
-      var response = await dio.get(ApiEndpoints.listing,
+      var response = await dio.get(ApiEndpoints.allListing,
           options: Options(
             headers: {
               'Authorization': 'Bearer $token',

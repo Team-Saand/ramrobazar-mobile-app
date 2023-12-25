@@ -8,18 +8,18 @@ part of 'listing_api_model.dart';
 
 ListingApiModel _$ListingApiModelFromJson(Map<String, dynamic> json) =>
     ListingApiModel(
-      id: json['id'] as String,
-      title: json['title'] as String,
-      price: json['price'] as String,
+      id: json['id'].toString() as String,
+      title: json['name'] as String,
+      price: json['price'].toString() as String,
       location: json['location'] as String,
       description: json['description'] as String,
       images:
           (json['images'] as List<dynamic>).map((e) => e as String).toList(),
-      username: json['username'] as String,
-      views: json['views'] as String,
-      phone: json['phone'] as String,
+      username: json['username']?? '' as String,
+      views: json['views'] ?? '0' as String,
+      phone: json['phone'].toString() ?? '0' as String,
       condition: json['condition'] as String,
-      category: json['category'] as String,
+      category: json['category'] ?? 'smth' as String,
     );
 
 Map<String, dynamic> _$ListingApiModelToJson(ListingApiModel instance) =>
