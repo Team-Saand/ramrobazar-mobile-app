@@ -51,7 +51,7 @@ class AppTheme {
           isDark ? ThemeConstant.secondaryColor : ThemeConstant.primaryColor,
       cardTheme: CardTheme(
         elevation: 4,
-        shape: RoundedRectangleBorder(
+        shape: RoundedRectangleBorder( 
           borderRadius: BorderRadius.circular(10),
         ),
       ),

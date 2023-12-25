@@ -36,7 +36,15 @@ class AdRemoteDataSource {
           .then((value) => value.fold((l) => null, (r) => token = r!));
 
       Map<String, dynamic> data;
-      data = {};
+
+      data = {
+        "title": listing.title,
+        "price": listing.price,
+        "category": listing.category,
+        "condition": listing.condition,
+        "location": listing.location,
+        "description": listing.description,
+      };
 
       Response response = await dio.post(ApiEndpoints.listing,
           data: data,
@@ -65,7 +73,8 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error']['message'][0] ?? 'No response from server',
+            error: e.response!.data['error']['message'][0] ??
+                'No response from server',
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );
@@ -108,7 +117,8 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error']['message'][0] ?? 'No response from server',
+            error: e.response!.data['error']['message'][0] ??
+                'No response from server',
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );
@@ -133,7 +143,8 @@ class AdRemoteDataSource {
       if (response.statusCode == 200) {
         GetListingDTO getAdInfoDTO = GetListingDTO.fromJson(response.data);
 
-        List<ListingEntity>listing= listingApiModel.toEntityList(getAdInfoDTO.data);
+        List<ListingEntity> listing =
+            listingApiModel.toEntityList(getAdInfoDTO.data);
 
         return Right(listing);
       } else {
@@ -155,7 +166,8 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error']['message'][0] ?? 'No response from server',
+            error: e.response!.data['error']['message'][0] ??
+                'No response from server',
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );
@@ -163,7 +175,8 @@ class AdRemoteDataSource {
     }
   }
 
-  Future<Either<Failure, Map<String, dynamic>>> getSingleListing(String id) async {
+  Future<Either<Failure, Map<String, dynamic>>> getSingleListing(
+      String id) async {
     try {
       String? token;
       await userSharedPrefs
@@ -180,12 +193,13 @@ class AdRemoteDataSource {
         GetSingleListingDTO getSingleAdInfoDTO =
             GetSingleListingDTO.fromJson(response.data);
 
-        ListingApiModel listingApi = ListingApiModel.fromJson(getSingleAdInfoDTO.data[1]);
+        ListingApiModel listingApi =
+            ListingApiModel.fromJson(getSingleAdInfoDTO.data[1]);
 
         ListingEntity listing = listingApiModel.toListingEntity(listingApi);
 
         Map<String, dynamic> responseData = {
-         "listing": listing,
+          "listing": listing,
         };
 
         return Right(responseData);
@@ -208,7 +222,8 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error']['message'][0] ?? 'No response from server',
+            error: e.response!.data['error']['message'][0] ??
+                'No response from server',
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );
@@ -250,7 +265,8 @@ class AdRemoteDataSource {
       } else {
         return Left(
           Failure(
-            error: e.response!.data['error']['message'][0] ?? 'No response from server',
+            error: e.response!.data['error']['message'][0] ??
+                'No response from server',
             statusCode: e.response?.statusCode.toString() ?? '400',
           ),
         );

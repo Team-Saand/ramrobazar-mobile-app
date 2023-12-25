@@ -12,22 +12,26 @@ class InfoView extends ConsumerStatefulWidget {
 class _InfoViewState extends ConsumerState<InfoView> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    Size screenSize = MediaQuery.of(context).size;
+
+    return SingleChildScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
       child: Container(
+        height: screenSize.height * 2,
         decoration: const BoxDecoration(
             gradient: LinearGradient(
                 tileMode: TileMode.clamp,
                 begin: Alignment(-1.0, -0.5),
-                end: Alignment(2, 2),
+                end: Alignment(1.8, 0.25),
                 colors: [
               ThemeConstant.primaryColor,
               Color.fromRGBO(255, 204, 106, 1),
             ])),
-        child: Scaffold(
+        child: const Scaffold(
           backgroundColor: Colors.transparent,
           body: Stack(
             children: [
-              const Column(
+              Column(
                 children: [
                   SizedBox(height: 90),
                   Row(
@@ -53,19 +57,15 @@ class _InfoViewState extends ConsumerState<InfoView> {
                     ],
                   ),
                   SizedBox(
-                    height: 355,
+                    height: 395,
                     width: 200,
                   ),
-                  Text('Version : 1.0.0')
+                  Text('Version : 1.0.0'),
+                  Text(
+                    '  Developed by: Team SAND',
+                    style: TextStyle(fontSize: 15),
+                  ),
                 ],
-              ),
-              Positioned(
-                bottom: 60,
-                left: MediaQuery.of(context).size.width / 4,
-                child: const Text(
-                  '  Developed by: Team SAND',
-                  style: TextStyle(fontSize: 15),
-                ),
               ),
             ],
           ),
