@@ -141,6 +141,7 @@ class AdRemoteDataSource {
             },
           ));
       if (response.statusCode == 200) {
+
         GetListingDTO getAdInfoDTO = GetListingDTO.fromJson(response.data);
 
         List<ListingEntity> listing =

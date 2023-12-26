@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../config/constants/api_endpoint.dart';
 import '../../../../../config/constants/theme_constant.dart';
+import '../../../../../config/router/app_route.dart';
 import '../../viewmodel/listing_view_model.dart';
 
 class AllListingView extends ConsumerStatefulWidget {
@@ -19,13 +21,11 @@ class _AllListingViewState extends ConsumerState<AllListingView> {
   Widget build(BuildContext context) {
     final listingState = ref.watch(listingViewModelProvider);
 
+    final lstImages = ['phone', 'car1', 'scooter', 'zoom', 'car2', 'car3'];
+
     Size screenSize = MediaQuery.of(context).size;
     SizedBox gap;
-    double buttonWidth;
-    double textFieldWidth;
 
-    buttonWidth = screenSize.width;
-    textFieldWidth = screenSize.width;
     gap = SizedBox(height: screenSize.height * 0.03);
 
     return Scaffold(
@@ -115,12 +115,105 @@ class _AllListingViewState extends ConsumerState<AllListingView> {
                       ),
                     ),
                   } else ...{
-                    Container(
-                      color: Colors.red,
-                      width: screenSize.width,
-                      height: screenSize.height * 0.7,
-                      child:  Text(listingState.listing![0].title),
-                    )
+                    Row(children: [
+                      Container(
+                        color: Colors.white,
+                        width: screenSize.width * 0.88,
+                        height: screenSize.height * 0.7,
+                        child: GridView.count(
+                          childAspectRatio: 0.5,
+                          crossAxisCount: 2,
+                          children: List.generate(listingState.listing!.length,
+                              (index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: GestureDetector(
+                                onDoubleTap: () => {
+                                  ref
+                                      .read(listingViewModelProvider.notifier)
+                                      .getSingleListing(listingState
+                                          .listing![index].id
+                                          .toString()),
+                                  Navigator.pushNamed(
+                                      context, AppRoute.listingViewSingle),
+                                },
+                                child: Center(
+                                  child: Container(
+                                    color: const Color.fromARGB(
+                                        255, 255, 255, 255),
+                                    height: 450,
+                                    child: Column(
+                                      children: [
+                                        Center(
+                                          child: SizedBox(
+                                            height: 250,
+                                            width: double.infinity,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              child: Image.network(
+                                                '${ApiEndpoints.imageUrl}/${lstImages[index]}.jpg',
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    " ${listingState.listing![index].condition}",
+                                                    style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255,
+                                                            142,
+                                                            140,
+                                                            139)),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  children: [
+                                                    Text(
+                                                      listingState
+                                                          .listing![index]
+                                                          .title,
+                                                      style: const TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 17),
+                                                    ),
+                                                    Text(
+                                                        "Rs. ${listingState.listing![index].price}",
+                                                        style: const TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 17,
+                                                        )),
+                                                  ]),
+
+                                                  
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          }),
+                        ),
+                      ),
+                    ])
                   }
                 ],
               ),

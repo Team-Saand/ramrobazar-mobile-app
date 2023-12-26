@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../config/router/app_route.dart';
 import '../../../../core/common/snackbar/snackbar_message.dart';
 import '../../domain/entity/user_entity.dart';
-import '../../domain/use_case/auth_usecase.dart';
+import '../view/user/use_case/auth_usecase.dart';
 import '../state/auth_state.dart';
 
 final authViewModelProvider =

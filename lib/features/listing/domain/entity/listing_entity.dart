@@ -51,4 +51,7 @@ class ListingEntity {
         'condition': condition,
         'category': category
       };
+
+      @override
+        toString() {return 'title: $title, price: $price, \n condition: $condition location: $location, description: $description ';}
 }
