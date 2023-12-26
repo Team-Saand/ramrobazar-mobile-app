@@ -12,17 +12,9 @@ class _UserDashboardViewState extends ConsumerState<UserDashboardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('User Dashboard'),
-        centerTitle: true,
-        elevation: 0,
-      ),
-      body: const SingleChildScrollView(
-        child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Center(
-              child: Text("User Dashboard"),
-            )),
+      body: SafeArea(
+        child: SingleChildScrollView(
+            child: Image.asset('assets/images/profile.jpg')),
       ),
     );
   }

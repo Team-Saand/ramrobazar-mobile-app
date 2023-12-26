@@ -28,7 +28,7 @@ class _HomViewState extends State<HomView> {
   List<IconData> iconList = [
     Icons.home_outlined,
     Icons.message_outlined,
-    Icons.notification_important_outlined,
+    Icons.settings_outlined,
     Icons.person_outline
   ];
 

@@ -21,7 +21,7 @@ class _SplashScreenViewState extends ConsumerState<SplashScreenView> {
   }
 
   Future<void> delayHai() async {
-    await Future.delayed(const Duration(seconds: 2), () {
+    await Future.delayed(const Duration(seconds: 3), () {
       ref.read(splashViewModelProvider.notifier).init(context);
     });
   }

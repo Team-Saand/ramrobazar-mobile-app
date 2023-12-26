@@ -45,7 +45,7 @@ class _InfoViewState extends ConsumerState<InfoView> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 70),
+                  SizedBox(height: 120),
                   Row(
                     children: [
                       Text(
@@ -57,7 +57,7 @@ class _InfoViewState extends ConsumerState<InfoView> {
                     ],
                   ),
                   SizedBox(
-                    height: 395,
+                    height: 365,
                     width: 200,
                   ),
                   Text('Version : 1.0.0'),
