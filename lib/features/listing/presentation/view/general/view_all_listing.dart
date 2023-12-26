@@ -21,7 +21,7 @@ class _AllListingViewState extends ConsumerState<AllListingView> {
   Widget build(BuildContext context) {
     final listingState = ref.watch(listingViewModelProvider);
 
-    final lstImages = ['phone', 'car1', 'scooter', 'zoom', 'car2', 'car3'];
+    final lstImages = ['phone', 'car1', 'scooter', 'zoom', 'car2', 'car3', 'car1', 'car2', 'phone', 'scooter'];
 
     Size screenSize = MediaQuery.of(context).size;
     SizedBox gap;

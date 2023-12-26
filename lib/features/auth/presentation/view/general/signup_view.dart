@@ -105,7 +105,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                               color: ThemeConstant.fieldTextColor),
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
-                                RegExp('[a-z" "]'))
+                                RegExp('[a-z" "A-Z]'))
                           ],
                           controller: _nameController,
                           decoration: InputDecoration(
@@ -248,9 +248,6 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                               String middleName = "";
                               String lastName = "";
                               bool trueName = true;
-
-                              print(strarray);
-                              print(strarray.length);
 
                               if (strarray.length <= 1) {
                                 trueName = false;

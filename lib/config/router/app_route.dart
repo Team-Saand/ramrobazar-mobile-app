@@ -6,7 +6,6 @@ import '../../features/auth/presentation/view/user/user_dashboard_view.dart';
 import '../../features/auth/presentation/view/user/user_message_view.dart';
 import '../../features/auth/presentation/view/user/user_notification_view.dart';
 import '../../features/listing/presentation/view/create/add_listing_.dart';
-import '../../features/listing/presentation/view/general/update_listing_view.dart';
 import '../../features/listing/presentation/view/general/view_all_listing.dart';
 import '../../features/listing/presentation/view/general/view_single_listing.dart';
 import '../../features/splash/presentation/view/splash_view.dart';
@@ -51,7 +50,6 @@ class AppRoute {
       listingViewAll: (context) => const AllListingView(),
 
       adBasicDetail: (context) => const AdBasicDetailView(),
-      adUpdate: (context) => const UpdateListingView()
     };
   }
 }

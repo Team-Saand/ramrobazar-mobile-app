@@ -86,7 +86,7 @@ class _AdBasicDetailViewState extends ConsumerState<AdBasicDetailView> {
                           text: "Post a new AD\n",
                           style: TextStyle(
                               fontSize: 35,
-                              fontWeight: FontWeight.bold, 
+                              fontWeight: FontWeight.bold,
                               height: 1.5,
                               color: ThemeConstant.fieldTextColor),
                           children: <TextSpan>[
@@ -135,50 +135,115 @@ class _AdBasicDetailViewState extends ConsumerState<AdBasicDetailView> {
                                 ),
                                 width: textFieldWidth,
                                 child: TextFormField(
-                                  style: const TextStyle(
-                                      color: ThemeConstant.fieldTextColor),
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.allow(
-                                        RegExp('[a-z0-9A-Z]'))
-                                  ],
-                                  controller: controllers[index],
-                                  decoration: const InputDecoration(
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: ThemeConstant.primaryColor),
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: ThemeConstant.primaryColor),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: ThemeConstant.accentColor),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.red,
+                                    style: const TextStyle(
+                                        color: ThemeConstant.fieldTextColor),
+                                    inputFormatters: [
+                                      controllerNames[index] == "Ad Price"
+                                          ? FilteringTextInputFormatter.allow(
+                                              RegExp('[0-9]'))
+                                          : FilteringTextInputFormatter.allow(
+                                              RegExp('[a-z0-9A-Z]'))
+                                    ],
+                                    controller: controllers[index],
+                                    decoration: InputDecoration(
+                                      focusedBorder: const UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: ThemeConstant.primaryColor),
                                       ),
+                                      enabledBorder: const UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: ThemeConstant.primaryColor),
+                                      ),
+                                      focusedErrorBorder:
+                                          const UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: ThemeConstant.accentColor),
+                                      ),
+                                      errorBorder: const UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                      errorStyle: const TextStyle(
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.bold),
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.never,
+                                      hintText:
+                                          controllerNames[index] == "Category"
+                                              ? "Phone/Bike/Car/Land/Others"
+                                              : controllerNames[index] ==
+                                                      "Condition"
+                                                  ? "New/Used"
+                                                  : "",
+                                      label: const Text(
+                                        ' ',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: fontSizee),
+                                      ),
+                                      border: const OutlineInputBorder(),
                                     ),
-                                    errorStyle: TextStyle(
-                                        color: Colors.red,
-                                        fontWeight: FontWeight.bold),
-                                    floatingLabelBehavior:
-                                        FloatingLabelBehavior.never,
-                                    label: Text(
-                                      ' ',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(fontSize: fontSizee),
-                                    ),
-                                    border: OutlineInputBorder(),
-                                  ),
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return "                                                           ${controllerNames[index]} is empty";
-                                    }
-                                    return null;
-                                  },
-                                ),
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "                                                           ${controllerNames[index]} is empty";
+                                      }
+                                      if (controllerNames[index] == "Price") {
+                                        if (controllers[index].text.trim() ==
+                                                "Bike" &&
+                                            int.parse(controllers[index]
+                                                    .text
+                                                    .trim()) <
+                                                30000) {
+                                          return " Minimum price for bike is Rs.30,000 ";
+                                        }
+                                        if (controllers[index].text.trim() ==
+                                                "Car" &&
+                                            int.parse(controllers[index]
+                                                    .text
+                                                    .trim()) <
+                                                60000) {
+                                          return " Minimum price for car is Rs.60,000 ";
+                                        }
+                                        if (controllers[index].text.trim() ==
+                                                "Land" &&
+                                            int.parse(controllers[index]
+                                                    .text
+                                                    .trim()) <
+                                                100000) {
+                                          return " Minimum price for land is Rs.100,000 ";
+                                        }
+                                        if (controllers[index].text.trim() ==
+                                                "Phone" &&
+                                            int.parse(controllers[index]
+                                                    .text
+                                                    .trim()) <
+                                                5000) {
+                                          return " Minimum price for phone is Rs.5,000 ";
+                                        }
+                                      }
+                                      if (controllerNames[index] ==
+                                          "Category") {
+                                        if (![
+                                          "Phone",
+                                          "Bike",
+                                          "Car",
+                                          "Land",
+                                          "Others"
+                                        ].contains(value)) {
+                                          return "Select an appropriate category";
+                                        } else if (controllerNames[index] ==
+                                            "Condition") {
+                                          if (![
+                                            "New",
+                                            "Used",
+                                          ].contains(value)) {
+                                            return "Select an appropriate condition";
+                                          }
+                                        }
+                                      }
+
+                                      return null;
+                                    }),
                               ),
                               SizedBox(
                                 width: screenSize.width,
