@@ -20,7 +20,7 @@ class App extends ConsumerWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Ramrobazar App',
+      title: 'Ramrobazar',
       theme: AppTheme.getApplicationTheme(isDarkTheme),
       initialRoute: AppRoute.splash,
       routes: AppRoute.getApplicationRoute(),

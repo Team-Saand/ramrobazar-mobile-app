@@ -1,4 +1,4 @@
-import 'package:ramrobazar_mobile_app/features/auth/presentation/view/user/home_page_view.dart';
+import 'package:ramrobazar/features/auth/presentation/view/user/home_page_view.dart';
 
 import '../../features/auth/presentation/view/general/signin_view.dart';
 import '../../features/auth/presentation/view/general/signup_view.dart';

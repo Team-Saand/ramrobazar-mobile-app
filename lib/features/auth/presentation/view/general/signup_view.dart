@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ramrobazar_mobile_app/config/constants/theme_constant.dart';
-import 'package:ramrobazar_mobile_app/core/common/snackbar/snackbar_message.dart';
-import 'package:ramrobazar_mobile_app/features/auth/domain/entity/user_entity.dart';
+import 'package:ramrobazar/config/constants/theme_constant.dart';
+import 'package:ramrobazar/core/common/snackbar/snackbar_message.dart';
+import 'package:ramrobazar/features/auth/domain/entity/user_entity.dart';
 
 import '../../../../../config/router/app_route.dart';
 import '../../viewmodel/auth_view_model.dart';
@@ -244,9 +244,9 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                             if (_key.currentState!.validate()) {
                               List<String> strarray =
                                   _nameController.text.split(" ");
-                              String first_name = "";
-                              String middle_name = "";
-                              String last_name = "";
+                              String firstName = "";
+                              String middleName = "";
+                              String lastName = "";
                               bool trueName = true;
 
                               print(strarray);
@@ -259,29 +259,29 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                                     message: "Please provide your full name.",
                                     color: Colors.red);
                               } else if (strarray.length == 2) {
-                                first_name = strarray[0];
-                                last_name = strarray[1];
+                                firstName = strarray[0];
+                                lastName = strarray[1];
                               } else {
-                                first_name = strarray[0];
-                                last_name = strarray[strarray.length - 1];
+                                firstName = strarray[0];
+                                lastName = strarray[strarray.length - 1];
                                 for (var i = 1; i < strarray.length - 1; i++) {
                                   strarray[i] = strarray[i][0].toUpperCase() +
                                       strarray[i].substring(1);
 
-                                  middle_name += strarray[i];
+                                  middleName += strarray[i];
                                 }
                               }
 
-                              first_name = first_name[0].toUpperCase() +
-                                  first_name.substring(1);
-                              last_name = last_name[0].toUpperCase() +
-                                  last_name.substring(1);
+                              firstName = firstName[0].toUpperCase() +
+                                  firstName.substring(1);
+                              lastName = lastName[0].toUpperCase() +
+                                  lastName.substring(1);
 
                               if (trueName) {
                                 UserEntity obj = UserEntity(
-                                    first_name: first_name,
-                                    middle_name: middle_name,
-                                    last_name: last_name,
+                                    first_name: firstName,
+                                    middle_name: middleName,
+                                    last_name: lastName,
                                     phone: _phoneController.text.trim(),
                                     password: _passwordController.text.trim());
                                 await ref

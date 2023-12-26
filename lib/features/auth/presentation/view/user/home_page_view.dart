@@ -1,10 +1,10 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:ramrobazar_mobile_app/config/constants/theme_constant.dart';
-import 'package:ramrobazar_mobile_app/features/auth/presentation/view/user/user_dashboard_view.dart';
-import 'package:ramrobazar_mobile_app/features/auth/presentation/view/user/user_message_view.dart';
-import 'package:ramrobazar_mobile_app/features/auth/presentation/view/user/user_notification_view.dart';
-import 'package:ramrobazar_mobile_app/features/listing/presentation/view/general/view_all_listing.dart';
+import 'package:ramrobazar/config/constants/theme_constant.dart';
+import 'package:ramrobazar/features/auth/presentation/view/user/user_dashboard_view.dart';
+import 'package:ramrobazar/features/auth/presentation/view/user/user_message_view.dart';
+import 'package:ramrobazar/features/auth/presentation/view/user/user_notification_view.dart';
+import 'package:ramrobazar/features/listing/presentation/view/general/view_all_listing.dart';
 
 import '../../../../../config/router/app_route.dart';
 

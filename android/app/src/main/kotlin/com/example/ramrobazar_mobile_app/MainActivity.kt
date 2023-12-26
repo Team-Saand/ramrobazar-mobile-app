@@ -1,4 +1,4 @@
-package com.example.ramrobazar_mobile_app
+package com.revamp.ramrobazar
 
 import io.flutter.embedding.android.FlutterActivity
 

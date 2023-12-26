@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ramrobazar_mobile_app/config/constants/theme_constant.dart';
-import 'package:ramrobazar_mobile_app/features/listing/domain/entity/listing_entity.dart';
-import 'package:ramrobazar_mobile_app/features/listing/presentation/viewmodel/listing_view_model.dart';
+import 'package:ramrobazar/config/constants/theme_constant.dart';
+import 'package:ramrobazar/features/listing/domain/entity/listing_entity.dart';
+import 'package:ramrobazar/features/listing/presentation/viewmodel/listing_view_model.dart';
 
 class AdBasicDetailView extends ConsumerStatefulWidget {
   const AdBasicDetailView({super.key});
