@@ -16,8 +16,6 @@ A revamped mobile application of Hamrobazar.
     3) Category regrouping.
     4) Name/Logo.
     5) Color Schemes.
-    6)
-    7)
 
 
 ## Features:
@@ -25,7 +23,7 @@ A revamped mobile application of Hamrobazar.
     2) User login.
     3) Dashboard.
     4) Advertisement listing.
-    5)
-    6)
-    7)
+    5) Messages
+    6) View all listings
+    7) View single listing
 
